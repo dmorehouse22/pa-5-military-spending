@@ -215,6 +215,14 @@ eastern_europe <- c("Armenia",
                     "Russia", 
                     "Ukraine")
 
+military_long |>
+  filter(Country == eastern_europe) |>
+  ggplot() +
+  geom_boxplot(aes(y = fct_reorder(Country, -n), 
+                   x = n)) +
+  labs(x = "Proportion of Government Spending",
+       y = "Eastern European Country")
+
 # Hint - look at the code chunk `filter-regions` and Question 2 for code similar to what you will want to use to filter out just these countries.  
 
 ```
