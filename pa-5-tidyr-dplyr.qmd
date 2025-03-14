@@ -82,7 +82,7 @@ military <- read_xlsx("data/gov_spending_per_capita.xlsx",  #reading in raw data
                       sheet = "Share of Govt. spending",    #specifying the sheet we want to focus on
                       skip  = 7,                            #skips first 7 lines, since they are comments
                       n_max = 191,                          #max number of rows to read in (191)
-                      na = c("xxx", ".."))                  #specifies what values to read in as "NA"
+                      na = c("xxx", ". ."))                  #specifies what values to read in as "NA"
 ```
 
 *I would highly recommend you open the dataset in Excel, so you can see the data layout!*
@@ -129,7 +129,7 @@ military_clean <- military |>
 
 **2. Write a sentence describing what the line of code `filter(!Country %in% regions)` is doing in the context of the data.**  
 
->Insert Answer Here
+> Filtering country rows that contains regions.  
 
 
 ### Canvas Question #1
@@ -142,8 +142,8 @@ military_clean <- military |>
 #| label: inspecting-what-regions-were-not-removed
 
 military_clean |> 
-  filter(if_all(.cols = _________,   #hint: what is the easiest way to include every column except `Country`
-                .fns = __________)   #hint: what function in R (there are several) tests if a value is missing or is NA?
+  filter(if_all(.cols = -Country,   #hint: what is the easiest way to include every column except `Country`
+                .fns = is.na)   #hint: what function in R (there are several) tests if a value is missing or is NA?
          )
 ```
 
